@@ -39,8 +39,7 @@ const Preview = {
   _color: undefined,
   _lastEntryTitle: undefined,
   _lastEntryUrl: undefined,
-
-  feedUrl: undefined,
+  _feedUrl: undefined,
 
   get avatarUrl() {
     return _avatarURL;
@@ -108,6 +107,13 @@ const Preview = {
     if (url !== undefined) {
       this._lastEntryUrl = url;
       embedLink.href = url;
+    }
+  },
+
+  get feedUrl() {return this._feedUrl},
+  set feedUrl(url) {
+    if(url !== undefined) {
+      this._feedUrl = url
     }
   },
 

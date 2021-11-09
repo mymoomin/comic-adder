@@ -48,6 +48,7 @@ const Preview = {
   set avatarUrl(url) {
     if (url !== undefined) {
       this._avatarUrl = url;
+      url ||= this.defaultValues.avatarURL
       avatarImg.src = url;
     }
   },
@@ -58,7 +59,8 @@ const Preview = {
   set username(username) {
     if (username !== undefined) {
       this._username = username;
-      usernameSpan.innerHTML = username;
+      username ||= this.defaultValues.username
+      usernameSpan.innerHTML = username || this.defaultValues.username;
     }
   },
 
@@ -82,11 +84,9 @@ const Preview = {
         hexcode = hexcode.replace("#", "");
         this._color = hexcode;
         embedWrapper.style.borderLeftColor = "#" + hexcode;
-        console.log(hexcode);
       } else {
         this._color = hexcode;
         embedWrapper.style.borderLeftColor = hexcode;
-        console.log(hexcode);
       }
     }
   },
@@ -109,6 +109,15 @@ const Preview = {
       this._lastEntryUrl = url;
       embedLink.href = url;
     }
+  },
+
+  defaultValues : {
+    avatarURL: "webhook_icon.png",
+    username: "RSS to Webhook",
+    title: "Default Comic",
+    color: "",
+    lastEntryTitle: "Default Comic: Page 2",
+    lastEntryUrl: "#",
   },
 
   submit() {

@@ -27,7 +27,7 @@ function toggleTheme2() {
 }
 
 const defaultValues = {
-  avatarURL: "/webhook_icon.png",
+  avatarURL: "webhook_icon.png",
   username: "RSS to Webhook",
   title: "Default Comic",
   color: "",

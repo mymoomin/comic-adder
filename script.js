@@ -11,27 +11,38 @@ checkFeedButton.addEventListener("click", checkFeed);
 
 async function checkFeed() {
   if (!feedInput.checkValidity()) {
-    feedInput.reportValidity()
+    feedInput.reportValidity();
     //invalid url stuff here
     return;
   }
+  checkFeedButton.disabled = "true";
+  checkFeedButton.classList.add("loading");
   console.log("loading");
   const response = await getDummyData(feedInput.value);
   switch (response.validity) {
     case true:
       if (!titleInput.value) titleInput.value = response.title;
-      Preview.update({...response, title: titleInput.value})
-
+      Preview.update({ ...response, title: titleInput.value });
+      checkFeedButton.classList.replace("loading", "success");
       //TODO: true stuff
       console.log("valid feed");
       break;
+
     case false:
       //TODO: false stuff
+      checkFeedButton.classList.replace("loading", "failure");
       console.log("invalid rss feed");
+      break;
+
     case "exists":
       //TODO: false stuff
       console.log("already exists");
+      break;
   }
+  setTimeout(() => {
+    checkFeedButton.setAttribute("class", "");
+    checkFeedButton.disabled = undefined;
+  }, 500);
 }
 
 async function getDummyData() {
@@ -83,8 +94,10 @@ function handleFormSubmit(event) {
   } else {
     // On a production site do form submission.
     submitButton.disabled = "true";
-    const data = JSON.stringify(Preview.submit(), null, 2)
-    alert(`If the backend worked, this would add the comic, with the data\n${data}`);
+    const data = JSON.stringify(Preview.submit(), null, 2);
+    alert(
+      `If the backend worked, this would add the comic, with the data\n${data}`
+    );
     event.preventDefault();
     submitButton.disabled = undefined;
   }

@@ -84,7 +84,7 @@ function handleFormSubmit(event) {
     // On a production site do form submission.
     submitButton.disabled = "true";
     const data = JSON.stringify(Preview.submit(), null, 2)
-    alert(`If the backend worked, this would add the comic!\n${data}`);
+    alert(`If the backend worked, this would add the comic, with the data\n${data}`);
     event.preventDefault();
     submitButton.disabled = undefined;
   }

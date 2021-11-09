@@ -38,7 +38,7 @@ async function getDummyData() {
   alert(
     "Haven't added the backend yet, so this just gets the data for Sleepless Domain for now"
   );
-  await fetch("/");
+  await fetch("");
   return {
     validity: true,
     title: "Sleepless Domain",

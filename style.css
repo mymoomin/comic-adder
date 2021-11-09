@@ -86,7 +86,7 @@ input {
 }
 
 input:not(:focus):not(:placeholder-shown):invalid {
-  outline: solid 2px red;
+  outline: solid 2px var(--alert);
 }
 
 label {
@@ -116,6 +116,11 @@ form section {
   margin: 60px auto;
   max-width: 500px;
   padding: 0 0 5px 0;
+}
+
+.required::after {
+  content: "*";
+  color: var(--alert)
 }
 
 @media (min-width: 450px) {
@@ -155,6 +160,7 @@ form section {
 }
 
 :root {
+  --alert: hsl(335, 90%,40%);
   --header-primary: #c0a0f0;
   --header-secondary: #b0b0d0;
   --text-normal: #a0accc;

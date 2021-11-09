@@ -8,22 +8,19 @@ const embedDescription = document.querySelector("div.embedDescription");
 
 const toggleButton = document.getElementById("toggleTheme");
 
-toggleButton.addEventListener("click", toggleTheme2);
+toggleButton.addEventListener("click", toggleTheme);
 let isDark = true;
 
 function toggleTheme() {
   if (isDark) {
     preview.classList.replace("theme-dark", "theme-light");
+    toggleButton.innerHTML = "Switch to dark theme"
   } else {
     preview.classList.replace("theme-light", "theme-dark");
+    toggleButton.innerHTML = "Switch to light theme"
   }
   isDark = !isDark;
   console.log("hello");
-}
-
-function toggleTheme2() {
-  preview.classList.replace("theme-dark", "theme-light") ||
-    preview.classList.replace("theme-light", "theme-dark");
 }
 
 const defaultValues = {

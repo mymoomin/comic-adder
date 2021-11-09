@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Comic Adder</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/discord_resets.css">
+    <link rel="stylesheet" href="/discord.css" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <script src="/script.js" type="module"></script>
+  </head>
+
+  <body>
+    <form action="/" method="post">
+      <h1>Add a Comic</h1>
+
+      <section>
+        <label for="feed">Feed URL</label>
+        <div class="input-wrapper">
+          <input
+            class="has-button"
+            id="feed"
+            name="feedUrl"
+            type="url"
+            pattern="https?://.+\..+"
+            placeholder="https://www.sleeplessdomain.com/comic/rss"
+            aria-describedby="url-constraints"
+            required
+          />
+          <button type="button" class="inline-button" id="checkFeed">
+            Check feed
+          </button>
+        </div>
+        <div class="descriptor" id="password-constraints">
+          Remember to include the <code>https://</code>
+        </div>
+      </section>
+
+      <section>
+        <label for="title">Title</label>
+        <input id="title" name="title" type="text" placeholder=" " required />
+      </section>
+
+      <section>
+        <label for="color">Embed colour (as hexcode)</label>
+        <input id="color" name="color" type="text" pattern="#?[\da-fA-F]{6}" />
+      </section>
+
+      <section>
+        <label for="author">Webhook username</label>
+        <input id="author" name="username" type="text" />
+      </section>
+
+      <section>
+        <label for="avatar">Webhook avatar (as url)</label>
+        <input id="avatar" name="avatarUrl" type="url" pattern="https?://.+\..+" />
+      </section>
+
+      <button id="submit">Add comic</button>
+    </form>
+
+
+    <h2 class="subheading">Preview</h2>
+    <div class="preview theme-dark">
+      <div class="message">
+        <div class="contents">
+          <img
+            class="avatar"
+            src="/webhook_icon.png"
+            alt="avatar"
+          />
+          <h2 class="header">
+            <span id="message-username" class="headerText">
+              <span class="username">RSS to Webhook</span>
+              <span class="botTag">
+                <span class="botText">BOT</span>
+              </span>
+            </span>
+            <span class="timestamp">
+              <time id="message-timestamp">
+                <i class="separator">-</i>
+                07/11/2021
+              </time>
+            </span>
+          </h2>
+          <div id="message-content" class="messageContent">
+            <span class="roleMention">@Default Webcomic</span>
+          </div>
+        </div>
+        <div class="container">
+          <div class="embedWrapper">
+            <div class="grid">
+              <div class="embedTitle embedCommon">
+                <a
+                  href="#"
+                  class="embedTitleLink embedTitle"
+                >
+                  <strong>Default Webcomic - Page 8</strong>
+                </a>
+              </div>
+              <div class="embedDescription embedCommon">New Default Webcomic!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button id="toggleTheme">Switch to light theme</button>
+  </body>
+</html>

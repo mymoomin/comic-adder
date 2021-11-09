@@ -1,0 +1,212 @@
+:root {
+  --desktop-font-size: 16px;
+  --mobile-font-size: 22px;
+  font-size: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  font-weight: 500;
+  margin: 10px 20px;
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+}
+
+button {
+  background-color: var(--header-primary);
+  border: none;
+  border-radius: 2px;
+  color: var(--background-primary);
+  cursor: pointer;
+  display: block;
+  font-size: 22px; /* fallback */
+  font-size: var(--mobile-font-size);
+  font-weight: 500;
+  margin: 3px 0 0 0;
+  padding: 10px;
+  border-radius: 1em;
+}
+
+button:hover {
+  background-color: #ccc;
+  color: black;
+}
+
+button#toggleTheme {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+button#signin {
+  margin: 0px 0 0 0;
+}
+
+button#toggle-password {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 300;
+  padding: 0;
+  /* Display at the top right of the password section */
+  position: absolute;
+  top: -4px;
+  right: -2px;
+}
+
+.descriptor {
+  margin: 5px 0 0 0;
+  font-size: 16px;
+  color: var(--text-normal);
+}
+
+form {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+h1 {
+  color: var(--header-primary);
+  border-bottom: 1px solid var(--header-primary);
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 0 40px 0;
+  padding: 0 0 5px 0;
+}
+
+input {
+  color: var(--text-normal);
+  background-color: var(--channeltextarea-background);
+  border: none;
+  border-radius: 1em;
+  font-size: 22px; /* fallback */
+  font-size: var(--mobile-font-size);
+  padding: 15px;
+  width: 90%; /* fallback */
+  width: calc(100% - 30px); /* full width minus padding */
+}
+
+input:not(:focus):not(:placeholder-shown):invalid {
+  outline: solid 2px red;
+}
+
+label {
+  color: var(--text-normal);
+  display: block;
+  font-size: 20px;
+  font-size: var(--mobile-font-size);
+  font-weight: 500;
+  margin: 0 0 3px 0;
+}
+
+form section {
+  margin: 0 0 40px 0;
+  position: relative; /* for password toggle positioning */
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.subheading {
+  color: var(--header-primary);
+  border-bottom: 1px solid var(--header-primary);
+  font-size: 28px;
+  font-weight: 600;
+  margin: 60px auto;
+  max-width: 500px;
+  padding: 0 0 5px 0;
+}
+
+@media (min-width: 450px) {
+  body {
+    margin: 20px 50px;
+  }
+  button {
+    font-size: 14px; /* fallback */
+    font-size: var(--desktop-font-size);
+  }
+  button#signin {
+    margin: 40px 0 0 0;
+  }
+  .descriptor {
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 28px;
+    font-size: calc(2 * var(--desktop-font-size));
+    font-weight: 500;
+    margin: 0 0 40px 0;
+  }
+  input {
+    font-size: 14px; /* fallback */
+    font-size: var(--desktop-font-size);
+  }
+  label {
+    font-size: 14px; /* fallback */
+    font-size: var(--desktop-font-size);
+  }
+}
+
+@media (min-width: 800px) {
+  body {
+    margin: 50px;
+  }
+}
+
+:root {
+  --header-primary: #c0a0f0;
+  --header-secondary: #b0b0d0;
+  --text-normal: #a0accc;
+  --text-muted: #72767d;
+  --text-link: #00b0f4;
+  --channels-default: #ae7297;
+  --interactive-normal: #ddddcc;
+  --interactive-hover: #fffded;
+  --interactive-active: #fffbbb;
+  --interactive-muted: #5f5266;
+  --background-primary: #150a19;
+  --background-secondary: #1f1126;
+  --background-secondary-alt: #180621;
+  --background-tertiary: #1d0f24;
+  --background-accent: #ccaaff;
+  --background-floating: var(--background-primary);
+  --background-mobile-header: #1f1126;
+  --background-modifier-hover: rgba(79, 84, 92, 0.16);
+  --background-modifier-active: rgba(79, 84, 92, 0.24);
+  --background-modifier-selected: rgba(79, 84, 92, 0.32);
+  --background-modifier-accent: hsla(0, 0%, 100%, 0.06);
+  --elevation-low: 0 1px 0 rgba(4, 4, 5, 0.2), 0 1.5px 0 rgba(6, 6, 7, 0.05),
+    0 2px 0 rgba(4, 4, 5, 0.05);
+  --elevation-high: 0 8px 16px rgba(0, 0, 0, 0.24);
+  --logo-primary: #ffffff;
+  --guild-header-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  --channeltextarea-background: #1f1126;
+  --activity-card-background: #202225;
+  --deprecated-panel-background: #150a19;
+  --deprecated-card-bg: rgba(32, 34, 37, 0.6);
+  --deprecated-card-editable-bg: rgba(32, 34, 37, 0.3);
+  --deprecated-store-bg: #150a19;
+  --deprecated-quickswitcher-input-background: #72767d;
+  --deprecated-quickswitcher-input-placeholder: hsla(0, 0%, 100%, 0.3);
+  --deprecated-text-input-bg: rgba(0, 0, 0, 0.1);
+  --deprecated-text-input-border: rgba(0, 0, 0, 0.3);
+  --deprecated-text-input-border-hover: #040405;
+  --deprecated-text-input-border-disabled: #202225;
+  --deprecated-text-input-prefix: #dcddde;
+
+  --scrollbar-auto-thumb: #8d67ce;
+  --scrollbar-auto-track: #3b1f51;
+  --scrollbar-auto-scrollbar-color-thumb: var(--background-tertiary);
+  --scrollbar-auto-scrollbar-color-track: #2f3136;
+  --scrollbar-thin-thumb: var(--scrollbar-auto-track);
+  --scrollbar-thin-track: transparent;
+
+  --background-modifier-hover: var(--scrollbar-auto-track);
+  --background-modifier-active: var(--scrollbar-auto-track);
+  --background-modifier-selected: var(--scrollbar-auto-track);
+
+  --background-accent: var(--scrollbar-auto-thumb);
+  --brand-experiment: #ae7fff !important;
+  --brand-experiment-560: #ae7fff !important;
+}

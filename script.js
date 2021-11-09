@@ -99,7 +99,6 @@ for (const elem of form.elements) {
 function updatePreview(event) {
   if (event.target.checkValidity()) {
     Preview[event.target.name] = event.target.value;
-    console.log(event)
   }
 }
 

@@ -83,7 +83,8 @@ function handleFormSubmit(event) {
   } else {
     // On a production site do form submission.
     submitButton.disabled = "true";
-    alert("If the backend worked, this would add the comic!");
+    const data = JSON.stringify(Preview.submit(), null, 2)
+    alert(`If the backend worked, this would add the comic!\n${data}`);
     event.preventDefault();
     submitButton.disabled = undefined;
   }
@@ -98,6 +99,7 @@ for (const elem of form.elements) {
 function updatePreview(event) {
   if (event.target.checkValidity()) {
     Preview[event.target.name] = event.target.value;
+    console.log(event)
   }
 }
 

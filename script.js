@@ -1,4 +1,4 @@
-import Preview from "/preview.js";
+import Preview from "preview.js";
 
 const form = document.querySelector("form");
 const feedInput = document.getElementById("feed");

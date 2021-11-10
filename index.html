@@ -5,8 +5,17 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="Comic Adder | Add your comic today!" />
+    <meta property="og:site_name" content="mymoomin" />
+    <meta
+      property="og:description"
+      content="Add a comic to our Instant®️ update notification service"
+    />
+    <meta property="og:image" content="favicon.png" />
+
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="discord_resets.css">
+    <link rel="stylesheet" href="discord_resets.css" />
     <link rel="stylesheet" href="discord.css" />
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <script src="script.js" type="module"></script>
@@ -28,9 +37,7 @@
             aria-describedby="url-constraints"
             required
           />
-          <button type="button" id="checkFeed">
-            Check feed
-          </button>
+          <button type="button" id="checkFeed">Check feed</button>
         </div>
         <div class="descriptor" id="url-constraints">
           Remember to include the <code>https://</code>
@@ -54,22 +61,22 @@
 
       <section>
         <label for="avatar">Webhook avatar (as url)</label>
-        <input id="avatar" name="avatarUrl" type="url" pattern="https?://.+\..+" />
+        <input
+          id="avatar"
+          name="avatarUrl"
+          type="url"
+          pattern="https?://.+\..+"
+        />
       </section>
 
       <button id="submit">Add comic</button>
     </form>
 
-
     <h2 class="subheading">Preview</h2>
     <div class="preview theme-dark">
       <div class="message">
         <div class="contents">
-          <img
-            class="avatar"
-            src="webhook_icon.png"
-            alt="avatar"
-          />
+          <img class="avatar" src="webhook_icon.png" alt="avatar" />
           <h2 class="header">
             <span id="message-username" class="headerText">
               <span class="username">RSS to Webhook</span>
@@ -92,14 +99,13 @@
           <div class="embedWrapper">
             <div class="grid">
               <div class="embedTitle embedCommon">
-                <a
-                  href="#"
-                  class="embedTitleLink embedTitle"
-                >
+                <a href="#" class="embedTitleLink embedTitle">
                   <strong>Default Webcomic - Page 8</strong>
                 </a>
               </div>
-              <div class="embedDescription embedCommon">New Default Webcomic!</div>
+              <div class="embedDescription embedCommon">
+                New Default Webcomic!
+              </div>
             </div>
           </div>
         </div>

@@ -23,15 +23,6 @@ function toggleTheme() {
   console.log("hello");
 }
 
-const defaultValues = {
-  avatarURL: "webhook_icon.png",
-  username: "RSS to Webhook",
-  title: "Default Comic",
-  color: "",
-  lastEntryTitle: "Default Comic: Page 2",
-  lastEntryUrl: "#",
-};
-
 const Preview = {
   _avatarUrl: undefined,
   _username: undefined,
@@ -118,7 +109,7 @@ const Preview = {
   },
 
   defaultValues : {
-    avatarURL: "webhook_icon.png",
+    avatarURL: "webhook_icon.svg",
     username: "RSS to Webhook",
     title: "Default Comic",
     color: "",
@@ -164,5 +155,3 @@ const updatePreview = ({
   preview.lastEntryTitle = lastEntryTitle;
   preview.lastEntryUrl = lastEntryUrl;
 };
-
-// updatePreview(defaultValues)

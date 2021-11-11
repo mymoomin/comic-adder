@@ -38,7 +38,7 @@ button:active {
 }
 
 button:disabled {
-  background-color: #ccc;
+  background-color: var(--disabled);
 }
 
 button::after {
@@ -64,7 +64,7 @@ button::after {
   content: "Loading...";
   transition: all 0.2s;
   position: absolute;
-  background-color: #ccc;
+  background-color: var(--disabled);
 }
 
 .success::after {
@@ -202,7 +202,8 @@ form section {
 
 :root {
   --alert: hsl(335, 90%,40%);
-  --success: #70CE69;
+  --success: #70ce69;
+  --disabled: #ccc
   --header-primary: #c0a0f0;
   --header-secondary: #b0b0d0;
   --text-normal: #a0accc;

@@ -69,7 +69,7 @@ button::after {
 
 .success::after {
   content: "✔";
-  background-color: greenyellow;
+  background-color: var(--success);
 }
 
 .failure::after {
@@ -202,6 +202,7 @@ form section {
 
 :root {
   --alert: hsl(335, 90%,40%);
+  --success: #70CE69;
   --header-primary: #c0a0f0;
   --header-secondary: #b0b0d0;
   --text-normal: #a0accc;

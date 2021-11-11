@@ -109,7 +109,7 @@ const Preview = {
   },
 
   defaultValues : {
-    avatarURL: "webhook_icon.svg",
+    avatarURL: "assets/webhook_icon.svg",
     username: "RSS to Webhook",
     title: "Default Comic",
     color: "",

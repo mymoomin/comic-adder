@@ -203,7 +203,7 @@ form section {
 :root {
   --alert: hsl(335, 90%,40%);
   --success: #70ce69;
-  --disabled: #ccc
+  --disabled: #ccc;
   --header-primary: #c0a0f0;
   --header-secondary: #b0b0d0;
   --text-normal: #a0accc;

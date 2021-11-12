@@ -41,7 +41,7 @@ async function checkFeed() {
   }
   setTimeout(() => {
     checkFeedButton.setAttribute("class", "");
-    checkFeedButton.disabled = undefined;
+    checkFeedButton.removeAttribute("disabled");
   }, 500);
 }
 

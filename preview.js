@@ -55,7 +55,7 @@ const Preview = {
   },
 
   get title() {
-    return _title;
+    return this._title;
   },
   set title(title) {
     if (title !== undefined) {
@@ -119,7 +119,7 @@ const Preview = {
 
   submit() {
     return {
-      feedUrl: this.feedUrl,
+      feedUrl: this._feedUrl,
       avatarUrl: this._avatarURL,
       username: this._username,
       title: this._title,

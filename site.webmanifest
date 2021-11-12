@@ -3,17 +3,32 @@
     "short_name": "Comic Adder",
     "icons": [
         {
+            "src": "assets/favicon.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        },
+        {
             "src": "assets/favicon-192.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         },
         {
             "src": "assets/favicon-512.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "assets/maskable_icon.png",
+            "sizes": "196x196",
+            "type": "image/png",
+            "purpose": "maskable"
         }
     ],
     "theme_color": "#c0a0f0",
     "background_color": "#c0a0f0",
-    "display": "standalone"
+    "display": "standalone",
+    "description": "Add a comic to our Instant®︎ update notification service"
 }

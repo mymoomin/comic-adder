@@ -48,95 +48,101 @@
   </head>
 
   <body>
-    <form action="" method="post">
-      <h1>Add a Comic</h1>
+    <main>
+      <form action="" method="post" class="panel">
+        <h1>Add a Comic</h1>
 
-      <section>
-        <label for="feed" class="required">Feed URL</label>
-        <div class="input-wrapper">
+        <section>
+          <label for="feed" class="required">Feed URL</label>
+          <div class="input-wrapper">
+            <input
+              id="feed"
+              name="feedUrl"
+              type="url"
+              pattern="https?://.+\..+"
+              placeholder="https://www.sleeplessdomain.com/comic/rss"
+              aria-describedby="url-constraints"
+              required
+            />
+            <button type="button" id="checkFeed" class="notransition">Check feed</button>
+          </div>
+          <div class="descriptor" id="url-constraints">
+            Remember to include the <code>https://</code>
+          </div>
+        </section>
+
+        <section>
+          <label for="title" class="required">Title</label>
+          <input id="title" name="title" type="text" placeholder=" " required />
+        </section>
+
+        <section>
+          <label for="color">Embed colour (as hexcode)</label>
+          <input id="color" name="color" type="text" pattern="#?[\da-fA-F]{6}" />
+        </section>
+
+        <section>
+          <label for="author">Webhook username</label>
+          <input id="author" name="username" type="text" />
+        </section>
+
+        <section>
+          <label for="avatar">Webhook avatar (as url)</label>
           <input
-            id="feed"
-            name="feedUrl"
+            id="avatar"
+            name="avatarUrl"
             type="url"
             pattern="https?://.+\..+"
-            placeholder="https://www.sleeplessdomain.com/comic/rss"
-            aria-describedby="url-constraints"
-            required
           />
-          <button type="button" id="checkFeed" class="notransition">Check feed</button>
-        </div>
-        <div class="descriptor" id="url-constraints">
-          Remember to include the <code>https://</code>
-        </div>
-      </section>
+        </section>
 
-      <section>
-        <label for="title" class="required">Title</label>
-        <input id="title" name="title" type="text" placeholder=" " required />
-      </section>
+        <button id="submit" class="center">Add comic</button>
+      </form>
 
-      <section>
-        <label for="color">Embed colour (as hexcode)</label>
-        <input id="color" name="color" type="text" pattern="#?[\da-fA-F]{6}" />
-      </section>
-
-      <section>
-        <label for="author">Webhook username</label>
-        <input id="author" name="username" type="text" />
-      </section>
-
-      <section>
-        <label for="avatar">Webhook avatar (as url)</label>
-        <input
-          id="avatar"
-          name="avatarUrl"
-          type="url"
-          pattern="https?://.+\..+"
-        />
-      </section>
-
-      <button id="submit">Add comic</button>
-    </form>
-
-    <h2 class="subheading">Preview</h2>
-    <div class="preview theme-dark">
-      <div class="message">
-        <div class="contents">
-          <img class="avatar" src="assets/webhook_icon.svg" alt="avatar" loading="lazy"/>
-          <h2 class="header">
-            <span id="message-username" class="headerText">
-              <span class="username">RSS to Webhook</span>
-              <span class="botTag">
-                <span class="botText">BOT</span>
-              </span>
-            </span>
-            <span class="timestamp">
-              <time id="message-timestamp">
-                <i class="separator">-</i>
-                07/11/2021
-              </time>
-            </span>
-          </h2>
-          <div id="message-content" class="messageContent">
-            <span class="roleMention">@Default Webcomic</span>
-          </div>
-        </div>
-        <div class="container">
-          <div class="embedWrapper">
-            <div class="grid">
-              <div class="embedTitle embedCommon">
-                <a href="#" class="embedTitleLink embedTitle">
-                  <strong>Default Webcomic - Page 8</strong>
-                </a>
+      <section class="panel">
+        <div class="preview-position">
+          <h1>Preview</h1>
+          <div class="preview theme-dark">
+            <div class="message">
+              <div class="contents">
+                <img class="avatar" src="assets/webhook_icon.svg" alt="avatar" loading="lazy"/>
+                <h2 class="header">
+                  <span id="message-username" class="headerText">
+                    <span class="username">RSS to Webhook</span>
+                    <span class="botTag">
+                      <span class="botText">BOT</span>
+                    </span>
+                  </span>
+                  <span class="timestamp">
+                    <time id="message-timestamp">
+                      <i class="separator">-</i>
+                      07/11/2021
+                    </time>
+                  </span>
+                </h2>
+                <div id="message-content" class="messageContent">
+                  <span class="roleMention">@Default Webcomic</span>
+                </div>
               </div>
-              <div class="embedDescription embedCommon">
-                New Default Webcomic!
+              <div class="container">
+                <div class="embedWrapper">
+                  <div class="grid">
+                    <div class="embedTitle embedCommon">
+                      <a href="#" class="embedTitleLink embedTitle">
+                        <strong>Default Webcomic - Page 8</strong>
+                      </a>
+                    </div>
+                    <div class="embedDescription embedCommon">
+                      New Default Webcomic!
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+          <button id="toggleTheme" class="center">Switch to light theme</button>
         </div>
-      </div>
-    </div>
-    <button id="toggleTheme">Switch to light theme</button>
+      </section>
+    </main>
   </body>
 </html>

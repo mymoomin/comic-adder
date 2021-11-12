@@ -12,6 +12,15 @@ body {
   color: var(--text-normal);
 }
 
+main {
+  margin: 0 auto;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: clamp(50px, 8vw, 100px);
+  justify-items: center;
+}
+
 button {
   background-color: var(--brand-experiment);
   border: none;
@@ -77,9 +86,8 @@ button::after {
   background-color: var(--alert);
 }
 
-button#toggleTheme {
+.center {
   margin: 0 auto;
-  max-width: 500px;
 }
 
 button#toggle-password {
@@ -100,9 +108,14 @@ button#toggle-password {
   color: var(--text-normal);
 }
 
-form {
-  margin: 0 auto;
+.panel {
   max-width: 500px;
+  width: 100%;
+}
+
+.preview-position {
+  position: sticky;
+  top: 50px;
 }
 
 h1 {

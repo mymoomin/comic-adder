@@ -11,6 +11,8 @@ const colorInput = document.getElementById("color");
 
 checkFeedButton.addEventListener("click", checkFeed);
 
+document.querySelectorAll(".notransition").forEach(node => node.classList.remove("notransition"))
+
 async function checkFeed() {
   if (!feedInput.checkValidity()) {
     feedInput.reportValidity();

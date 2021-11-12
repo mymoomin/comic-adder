@@ -164,6 +164,10 @@ form section {
   color: var(--alert)
 }
 
+.notransition {
+  transition: none;
+}
+
 @media (min-width: 450px) {
   body {
     margin: 20px 50px;

@@ -1,5 +1,7 @@
 import Preview from "./preview.js";
 
+const SERVER_URL = "http://127.0.0.1:8080/";
+
 const form = document.querySelector("form");
 const feedInput = document.getElementById("feed");
 const checkFeedButton = document.getElementById("checkFeed");
@@ -18,8 +20,9 @@ async function checkFeed() {
   checkFeedButton.disabled = "true";
   checkFeedButton.classList.add("loading");
   console.log("loading");
-  const response = await getDummyData(feedInput.value);
-  switch (response.validity) {
+  const response = await getFeed(feedInput.value);
+  console.log(response);
+  switch (response.valid) {
     case true:
       if (!titleInput.value) titleInput.value = response.title;
       Preview.update({ ...response, title: titleInput.value });
@@ -29,9 +32,10 @@ async function checkFeed() {
       break;
 
     case false:
-      //TODO: false stuff
       checkFeedButton.classList.replace("loading", "failure");
       console.log("invalid rss feed");
+      feedInput.setCustomValidity(getErrorMessage(response.reason));
+      feedInput.reportValidity();
       break;
 
     case "exists":
@@ -42,7 +46,26 @@ async function checkFeed() {
   setTimeout(() => {
     checkFeedButton.setAttribute("class", "");
     checkFeedButton.removeAttribute("disabled");
-  }, 500);
+  }, 1000);
+}
+
+function getErrorMessage(e) {
+  switch (e) {
+    case "http":
+      return "Something went wrong fetching the URL. Check for typos";
+
+    case "feed":
+      return "Something went wrong parsing the feed. Are you sure the URL is correct and RSS feed is working?";
+  }
+}
+
+async function getFeed(feed) {
+  try {
+    return fetch(SERVER_URL + "check-feed?" + feed).then((res) => res.json());
+  } catch (e) {
+    console.error(e);
+    return { valid: false, reason: "Internal error" };
+  }
 }
 
 async function getDummyData() {
@@ -51,7 +74,7 @@ async function getDummyData() {
   );
   await fetch("");
   return {
-    validity: true,
+    valid: true,
     title: "Sleepless Domain",
     lastEntryTitle: "Sleepless Domain - Chapter ??? - Page 8",
     lastEntryUrl: "https://www.sleeplessdomain.com/comic/chapter-page-8",
@@ -85,7 +108,7 @@ function validateColor() {
 
 form.addEventListener("submit", handleFormSubmit);
 
-function handleFormSubmit(event) {
+async function handleFormSubmit(event) {
   event.preventDefault();
   console.log("submit");
   if (form.checkValidity() === false) {
@@ -95,9 +118,33 @@ function handleFormSubmit(event) {
     // On a production site do form submission.
     submitButton.disabled = "true";
     const data = JSON.stringify(Preview.submit(), null, 2);
-    alert(
-      `If the backend worked, this would add the comic, with the data\n${data}`
-    );
+    if (
+      confirm(
+        `Are you sure you want to add the comic ${Preview.title}, with the data\n${data}\n?`
+      )
+    ) {
+      submitButton.classList.add("loading");
+
+      const response = await fetch(SERVER_URL + "add-feed", {
+        method: "post",
+        body: data,
+      }).then((res) => res.json());
+
+      if (response.success) {
+        submitButton.classList.replace("loading", "success");
+        console.log("added feed");
+      } else {
+        submitButton.classList.replace("loading", "failure");
+        console.log("issue adding feed", response);
+        submitButton.setCustomValidity("Sorry, something went wrong");
+        submitButton.reportValidity();
+      }
+      setTimeout(() => {
+        submitButton.setAttribute("class", "");
+        submitButton.removeAttribute("disabled");
+        submitButton.setCustomValidity("")
+      }, 1000);
+    }
     event.preventDefault();
     submitButton.disabled = undefined;
   }

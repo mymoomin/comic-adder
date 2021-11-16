@@ -21,6 +21,12 @@ main {
   justify-items: center;
 }
 
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
 button {
   background-color: var(--brand-experiment);
   border: none;

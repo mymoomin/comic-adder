@@ -16,15 +16,9 @@ main {
   margin: 0 auto;
   max-width: 1000px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr));
   gap: clamp(50px, 8vw, 100px);
   justify-items: center;
-}
-
-@media (max-width: 800px) {
-  main {
-    grid-template-columns: 1fr;
-  }
 }
 
 button {

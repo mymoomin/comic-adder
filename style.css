@@ -16,8 +16,8 @@ main {
   margin: 0 auto;
   max-width: 1000px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr));
-  gap: clamp(50px, 8vw, 100px);
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: 8%;
   justify-items: center;
 }
 

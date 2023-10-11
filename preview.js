@@ -33,7 +33,7 @@ const Preview = {
   _feedUrl: undefined,
 
   get avatarUrl() {
-    return _avatarURL;
+    return _avatarUrl;
   },
   set avatarUrl(url) {
     if (url !== undefined) {
@@ -120,7 +120,7 @@ const Preview = {
   submit() {
     return {
       feedUrl: this._feedUrl,
-      avatarUrl: this._avatarURL,
+      avatarUrl: this._avatarUrl,
       username: this._username,
       title: this._title,
       color: this._color,

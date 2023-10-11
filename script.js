@@ -1,6 +1,7 @@
 import Preview from "./preview.js";
+import * as htmlparser2 from "./node_modules/htmlparser2/lib/esm/index.js";
 
-const SERVER_URL = "http://127.0.0.1:8080/";
+const SERVER_URL = "https://cogpe6lgr5gmzkdra5le43mvva0iqpyk.lambda-url.eu-north-1.on.aws/";
 
 const form = document.querySelector("form");
 const feedInput = document.getElementById("feed");
@@ -20,35 +21,29 @@ async function checkFeed() {
     return;
   }
   checkFeedButton.disabled = "true";
+  checkFeedButton.classList.remove("success", "failure")
   checkFeedButton.classList.add("loading");
   console.log("loading");
-  const response = await getFeed(feedInput.value);
-  console.log(response);
-  switch (response.valid) {
-    case true:
-      if (!titleInput.value) titleInput.value = response.title;
-      Preview.update({ ...response, title: titleInput.value });
-      checkFeedButton.classList.replace("loading", "success");
-      //TODO: true stuff
-      console.log("valid feed");
-      break;
-
-    case false:
-      checkFeedButton.classList.replace("loading", "failure");
-      console.log("invalid rss feed");
-      feedInput.setCustomValidity(getErrorMessage(response.reason));
-      feedInput.reportValidity();
-      break;
-
-    case "exists":
-      //TODO: false stuff
-      console.log("already exists");
-      break;
-  }
-  setTimeout(() => {
-    checkFeedButton.setAttribute("class", "");
+  try {
+    const response = await fetch(SERVER_URL + feedInput.value);
+    console.log(response);
+    const feed = htmlparser2.parseFeed(await response.text());
+    if (feed == null) throw new Error("Missing feed");
+    if (feed.items.length == 0) throw new Error("Feed has no entries");
+    const lastEntry = feed.items[0];
+    Preview.lastEntryTitle = lastEntry.title
+    Preview.lastEntryUrl = lastEntry.link
+    checkFeedButton.classList.replace("loading", "success");
+    console.log("valid feed");
+  } catch (e) {
+    console.log(e)
+    checkFeedButton.classList.replace("loading", "failure");
+    console.log("invalid rss feed");
+    feedInput.setCustomValidity(getErrorMessage(response.reason));
+    feedInput.reportValidity();
+  } finally {
     checkFeedButton.removeAttribute("disabled");
-  }, 1000);
+  }
 }
 
 function getErrorMessage(e) {

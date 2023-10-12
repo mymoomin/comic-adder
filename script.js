@@ -92,11 +92,11 @@ colorInput.addEventListener("input", validateColor);
 
 function validateColor() {
   let message = "";
-  if (!/^$|#?[\da-fA-F]{6}/.test(colorInput.value)) {
-    if (!/#?.{6}/.test(colorInput.value)) {
+  if (!/^$|(#|0x)?[\da-fA-F]{6}/.test(colorInput.value)) {
+    if (!/(#|0x)?.{6}/.test(colorInput.value)) {
       message += "Must be 6 digits. ";
     }
-    if (!/^#?[\da-fA-F]*$/.test(colorInput.value)) {
+    if (!/^(#|0x)?[\da-fA-F]*$/.test(colorInput.value)) {
       message += "\nDigits must be either numbers 0-9 or letters A-F";
     }
   }

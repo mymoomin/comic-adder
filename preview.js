@@ -71,7 +71,7 @@ const Preview = {
   set color(hexcode) {
     if (hexcode !== undefined) {
       if (hexcode) {
-        hexcode = hexcode.replace("#", "");
+        hexcode = hexcode.replace(/#|0x/, "")
         this._color = hexcode;
         embedWrapper.style.borderLeftColor = "#" + hexcode;
       } else {

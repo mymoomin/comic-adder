@@ -123,7 +123,7 @@ const Preview = {
       avatarUrl: this._avatarUrl,
       username: this._username,
       title: this._title,
-      color: this._color,
+      color: this._color ? Number.parseInt(this._color, 16) : undefined,
     };
   },
 

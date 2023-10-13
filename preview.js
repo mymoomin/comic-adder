@@ -58,11 +58,9 @@ const Preview = {
     return this._title;
   },
   set title(title) {
-    if (title !== undefined) {
-      this._title = title;
-      roleSpan.innerHTML = `@${title}`;
-      embedDescription.innerHTML = `New ${title}!`;
-    }
+    this._title = title;
+    roleSpan.innerHTML = `@${title}`;
+    embedDescription.innerHTML = `New ${title}!`;
   },
 
   get color() {

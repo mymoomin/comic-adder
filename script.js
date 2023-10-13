@@ -39,6 +39,11 @@ async function checkFeed() {
     const lastEntry = feed.items[0];
     Preview.lastEntryTitle = lastEntry.title
     Preview.lastEntryUrl = lastEntry.link
+    console.log(feed.title, Preview.title)
+    if (feed.title && !titleInput.value) {
+      titleInput.value = feed.title;
+      Preview.title = feed.title;
+    }
     checkFeedButton.classList.replace("loading", "success");
     console.log("valid feed");
   } catch (e) {

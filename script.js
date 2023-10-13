@@ -114,36 +114,15 @@ async function handleFormSubmit(event) {
   } else {
     // On a production site do form submission.
     submitButton.disabled = "true";
+    submitButton.classList.add("loading");
     const data = JSON.stringify(Preview.submit(), null, 2);
-    if (
-      confirm(
-        `Are you sure you want to add the comic ${Preview.title}, with the data\n${data}\n?`
-      )
-    ) {
-      submitButton.classList.add("loading");
-
-      const response = await fetch(SERVER_URL + "add-feed", {
-        method: "post",
-        body: data,
-      }).then((res) => res.json());
-
-      if (response.success) {
-        submitButton.classList.replace("loading", "success");
-        console.log("added feed");
-      } else {
-        submitButton.classList.replace("loading", "failure");
-        console.log("issue adding feed", response);
-        submitButton.setCustomValidity("Sorry, something went wrong");
-        submitButton.reportValidity();
-      }
-      setTimeout(() => {
-        submitButton.setAttribute("class", "");
-        submitButton.removeAttribute("disabled");
-        submitButton.setCustomValidity("")
-      }, 1000);
-    }
+    confirm(
+      `Copy and paste \n\`\`\`json\n${data}\`\`\`\n into the server`
+    )
     event.preventDefault();
     submitButton.disabled = undefined;
+    submitButton.setCustomValidity("")
+    submitButton.classList.remove("loading");
   }
 }
 

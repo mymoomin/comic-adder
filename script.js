@@ -26,11 +26,15 @@ async function checkFeed() {
   checkFeedButton.classList.remove("success", "failure")
   checkFeedButton.classList.add("loading");
   console.log("loading");
+  let response = null;
   try {
     const response = await fetch(SERVER_URL + feedInput.value);
     console.log(response);
+    if (!response.ok) {
+      throw response
+    }
     const feed = htmlparser2.parseFeed(await response.text());
-    if (feed == null) throw new Error("Missing feed");
+    if (feed == null) throw new Error("Not an RSS feed");
     if (feed.items.length == 0) throw new Error("Feed has no entries");
     const lastEntry = feed.items[0];
     Preview.lastEntryTitle = lastEntry.title
@@ -38,23 +42,24 @@ async function checkFeed() {
     checkFeedButton.classList.replace("loading", "success");
     console.log("valid feed");
   } catch (e) {
+    console.log("in error handling")
     console.log(e)
     checkFeedButton.classList.replace("loading", "failure");
     console.log("invalid rss feed");
-    feedInput.setCustomValidity(getErrorMessage(response.reason));
+    feedInput.setCustomValidity(getErrorMessage(e));
     feedInput.reportValidity();
   } finally {
     checkFeedButton.removeAttribute("disabled");
+    setTimeout(() => checkFeedButton.classList.remove("failure"), 5000)
   }
 }
 
 function getErrorMessage(e) {
-  switch (e) {
-    case "http":
-      return "Something went wrong fetching the URL. Check for typos";
-
-    case "feed":
-      return "Something went wrong parsing the feed. Are you sure the URL is correct and RSS feed is working?";
+  switch (true) {
+    case e instanceof Response:
+      return `HTTP ${e.status}: ${e.statusText}`;
+    default:
+      return e.toString()
   }
 }
 

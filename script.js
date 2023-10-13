@@ -10,6 +10,8 @@ const titleInput = document.getElementById("title");
 const submitButton = document.getElementById("submit");
 const colorInput = document.getElementById("color");
 
+const dataPre = document.getElementById("data")
+
 checkFeedButton.addEventListener("click", checkFeed);
 
 document.querySelectorAll(".notransition").forEach(node => node.classList.remove("notransition"))
@@ -135,6 +137,7 @@ for (const elem of form.elements) {
 function updatePreview(event) {
   if (event.target.checkValidity()) {
     Preview[event.target.name] = event.target.value;
+    dataPre.innerHTML = JSON.stringify(Preview.submit(), null, 2)
   }
 }
 

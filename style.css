@@ -35,7 +35,7 @@ button {
   padding: 10px;
   border-radius: 1em;
   position: relative;
-  transition: all 0.2s ease-in
+  transition: all 0.2s ease-in;
 }
 
 button:hover {
@@ -115,7 +115,6 @@ button#toggle-password {
 
 .preview-position {
   position: sticky;
-  top: 50px;
 }
 
 h1 {
@@ -174,7 +173,7 @@ form section {
 
 .required::after {
   content: "*";
-  color: var(--alert)
+  color: var(--alert);
 }
 
 .notransition {
@@ -218,7 +217,7 @@ form section {
 }
 
 :root {
-  --alert: hsl(335, 90%,40%);
+  --alert: hsl(335, 90%, 40%);
   --success: #70ce69;
   --disabled: #ccc;
   --header-primary: #c0a0f0;
